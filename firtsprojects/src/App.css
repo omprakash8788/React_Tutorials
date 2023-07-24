@@ -1,0 +1,36 @@
+.navbar{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(5, 33, 83);
+  height: 40px;
+  padding-top: 16px ;
+  
+}
+.navbar>a{
+  text-decoration: none;
+  color: white;
+}
+.products{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  background-color: aqua;
+  border: 1px solid red;
+}
+.products>div{
+  height: auto;
+  background-color: blueviolet;
+  border: 1px solid black;
+
+
+}
+.products>div>img{
+  width: 100%;
+}
+.products>div>h1{
+  text-align: center;
+}
+.products>div>p{
+  text-align: center;
+}
