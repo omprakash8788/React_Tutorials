@@ -1,0 +1,1 @@
+## pass props to another components
