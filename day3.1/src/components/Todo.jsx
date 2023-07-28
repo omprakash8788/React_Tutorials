@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
+
 const Todo = () => {
   const [text, setText] = useState("");
   const [todolist, setTodoList] = useState([]);
@@ -22,6 +23,7 @@ const Todo = () => {
   };
   return (
     <div>
+        {/* AddTodo */}
     <div>
       <input
         placeholder="Add a new todo"
@@ -31,6 +33,7 @@ const Todo = () => {
       <button onClick={handleAdd}>ADD</button>
     </div>
     <div> 
+        {/* bunch of  */}
         {
         todolist.map((todo)=>(
             <div>{todo.title} - {todo.status ? " Completed":"Not Completed"}</div>
