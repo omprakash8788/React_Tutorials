@@ -25,3 +25,18 @@ function App() {
 export default App;
 
 day4.1 34.56
+
+
+// callback exp
+
+function greet(name, callbackFn){
+  const greetingWord="Hello"
+  console.log(callbackFn(greetingWord)+ " " + name )
+}
+function sayHello(someWord){
+  return someWord;
+}
+greet("Students", sayHello)
+
+
+1:24:00
