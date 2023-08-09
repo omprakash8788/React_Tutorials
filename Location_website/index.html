@@ -6,46 +6,52 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.3/mapbox-gl.css' rel='stylesheet' />
     <title>3D Map Example</title>
     <style>
-        #map {
-    width: 100vw;
-    height: 100vh;
-}
+  #news-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .news-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+</style>
 
-    </style>
+
 </head>
 <body>
-    <div id="map"></div>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.3/mapbox-gl.js'></script>
-    <script src='script.js'></script>
+    <div id="news-container"></div>
 </body>
 </html>
-<script>
-    mapboxgl.accessToken = 'YOUR_MAPBOX_API_KEY';
-const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11', // You can use different Mapbox styles
-    center: [longitude, latitude], // Set the initial center coordinates
-    zoom: zoomLevel, // Set the initial zoom level
-    pitch: 45, // Set the pitch angle for 3D effect
-    bearing: -17.6 // Set the bearing angle
-});
+  <script>
+apikey = '87fa125c9ec9beafc752816663a63ff4';
+url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=' + apikey;
 
-// Add 3D buildings layer
-map.on('load', () => {
-    map.addLayer({
-        'id': '3d-buildings',
-        'source': 'composite',
-        'source-layer': 'building',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-            'fill-extrusion-color': '#aaa',
-            'fill-extrusion-height': ['get', 'height'],
-            'fill-extrusion-base': ['get', 'min_height'],
-            'fill-extrusion-opacity': 0.6
-        }
-    });
-});
+fetch(url)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    articles = data.articles;
 
+    for (i = 0; i < articles.length; i++) {
+      // articles[i].title
+      console.log("Title: " + articles[i]['title']);
+      // articles[i].description
+      console.log("Description: " + articles[i]['description']);
+      // You can replace {property} below with any of the article properties returned by the API.
+      // articles[i].{property}
+      // console.log(articles[i]['{property}']);
+
+      // Delete this line to display all the articles returned by the request. Currently only the first article is displayed.
+      break;
+    }
+  });
 </script>
+
+
+
