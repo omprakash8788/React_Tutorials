@@ -50,6 +50,15 @@
         console.log('Call ended.');
       }
     }
+    
+    function hangUp() {
+      if (isCalling) {
+        isCalling = false;
+        callButton.disabled = false;
+        hangupButton.disabled = true;
+        console.log('Call ended.');
+      }
+    }
   </script>
 </body>
 </html>
