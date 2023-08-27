@@ -14,13 +14,21 @@ const getData = (url) => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
-const Post = () => {
+const Pagination = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [posts, setPosts] = useState([]);
   //2. maintain page state
   const [page, setPage] = useState(1)
+  const [count, setCount]= useState(1)
 
+
+  useEffect(()=>{
+    console.log(`get called everytimes`);
+  })
+  useEffect(()=>{
+    console.log(`get called everytimes value of page changes`);
+  },[page])
 
   // how to used useEffect 
   useEffect(()=>{
@@ -64,6 +72,10 @@ const Post = () => {
 
   return (
     <div>
+        <div>
+          <h1>Count</h1>  
+          <button onClick={()=>setCount(count+1)}>Inc</button>
+        </div>
       <h1>Posts</h1>
       <hr />
       <div>
@@ -86,4 +98,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Pagination;

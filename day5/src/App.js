@@ -1,12 +1,14 @@
 import './App.css';
 import Count from './componets/Count';
+import Pagination from './componets/Pagination';
 import Post from './componets/Post';
 function App() {
 
   return (
     <div className="App">
-     <Count/>
-     <Post/>
+     {/* <Count/>
+     <Post/> */}
+     <Pagination/>
     </div>
   );
 }
