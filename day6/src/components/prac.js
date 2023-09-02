@@ -17,8 +17,8 @@ function counter(initVal){
 }
 
 const [inc, getCount]=counter(0)
-inc()
-inc()
-inc()
-inc()
-getCount()
+inc() //1
+inc() //2
+inc() //3
+inc() // 4
+getCount() // 0
