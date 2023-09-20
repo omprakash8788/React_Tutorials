@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate, useSearchParams} from "react-router-dom";
 // import { } from "../contaxt/AuthContextProvider";
 
 const getData = (url) => {
   return fetch(url).then((res) => res.json());
 };
+
+// write function to convert string into number
+const getCurrentPage=(page)=>{
+  let pageNumber=Number(page)
+
+  return pageNumber
+}
 
 const User = () => {
   //   const [users, setUsers] = useState([]);
@@ -12,13 +19,17 @@ const User = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams]=useSearchParams()
+  // 1. Pagination
+  const [page, setPage]= useState(getCurrentPage(searchParams.get('page')));
+
   
   // const isAuth = false;
   // const {isAuth}=useContext(AuthContext)
 
-  const fetchAndUpdateData = () => {
+  const fetchAndUpdateData = (page) => {
     setLoading(true);
-    getData(`https://reqres.in/api/users`)
+    getData(`https://reqres.in/api/users?page=${page}`)
       .then((res) => {
         console.log(res);
         setUsers(res);
@@ -32,14 +43,29 @@ const User = () => {
   };
 
   useEffect(() => {
-    fetchAndUpdateData();
-  }, []);
+    fetchAndUpdateData(page);
+  }, [page]);
+
+
+  useEffect(()=>{
+    setSearchParams({page:page});
+  },[page])
 
 // // this is condition for if the user is auth or not , if user not auth it render on login page
 // if(!isAuth){
 //  return <Navigate to="/login"/>
 // }
 // i am writing this code in private route
+
+// page change functions
+const handlePageChange=(val)=>{
+   const updatePage = page+val;
+   setPage(updatePage)
+}
+
+
+// serachparams
+
 
   return loading ? (
     <h1>Loading...</h1>
@@ -66,6 +92,13 @@ const User = () => {
       <Link to="/about">
         <button>Go to about page</button>
       </Link>
+      <br />
+      <br />
+      {/* page maitaining  */}
+      <button onClick={()=>handlePageChange(-1)}>Previous</button>
+      <button disabled >{page}</button>
+      <button onClick={()=>handlePageChange(1)}>Next</button>
+
     </div>
   );
 };
