@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../contaxt/AuthContextProvider'
 
 const Home = () => {
+  const {isAuth ,logout} = useContext(AuthContext)
   return (
-    <div>Home</div>
+    <div>
+     <h1>Home Page</h1>
+     <button disabled={!isAuth} onClick={logout}>Logout</button>
+    </div>
   )
 }
 

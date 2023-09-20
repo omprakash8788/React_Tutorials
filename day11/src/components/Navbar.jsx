@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../contaxt/AuthContextProvider';
 
 
 // 2 ways to link pages 
@@ -15,7 +16,8 @@ const links=[
 
 const Navbar = () => {
     const defaultLinkStyle = { textDecoration:"none", color:"blue", fontSize:"20px"};
-    const activeLinkStyle = { textDecoration:"none", color:"red", fontSize:"20px"}
+    const activeLinkStyle = { textDecoration:"none", color:"red", fontSize:"20px"};
+    const {isAuth} = useContext(AuthContext)
   return (
     <div
     style={{
@@ -34,6 +36,8 @@ const Navbar = () => {
             // <Link key={path} to={path}>{title}</Link>
         ))
     }
+
+    <p>Is User Authenticated: {isAuth ? "Yes":"No"}</p>
    
    {/* 1 ways to link page */}
     {/* <Link style={{textDecoration:"none"}} to="/">Home</Link>

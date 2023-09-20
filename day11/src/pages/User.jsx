@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+// import { } from "../contaxt/AuthContextProvider";
 
 const getData = (url) => {
   return fetch(url).then((res) => res.json());
@@ -8,9 +9,12 @@ const getData = (url) => {
 const User = () => {
   //   const [users, setUsers] = useState([]);
   const [users, setUsers] = useState({});
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+  
+  // const isAuth = false;
+  // const {isAuth}=useContext(AuthContext)
 
   const fetchAndUpdateData = () => {
     setLoading(true);
@@ -30,6 +34,12 @@ const User = () => {
   useEffect(() => {
     fetchAndUpdateData();
   }, []);
+
+// // this is condition for if the user is auth or not , if user not auth it render on login page
+// if(!isAuth){
+//  return <Navigate to="/login"/>
+// }
+// i am writing this code in private route
 
   return loading ? (
     <h1>Loading...</h1>
@@ -51,6 +61,11 @@ const User = () => {
           <Link to={`/users/${user.id}`}>More info</Link>
         </div>
       ))}
+      {/*3. invoke it */}
+      <button onClick={()=>navigate(`/`)}>Go to home page</button>
+      <Link to="/about">
+        <button>Go to about page</button>
+      </Link>
     </div>
   );
 };
