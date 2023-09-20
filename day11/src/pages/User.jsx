@@ -8,9 +8,23 @@ const getData = (url) => {
 
 // write function to convert string into number
 const getCurrentPage=(page)=>{
-  let pageNumber=Number(page)
+  // let pageNumber=Number(page)
 
-  return pageNumber
+  // if(typeof pageNumber!="number"){
+  //   pageNumber=1;
+  // }
+  // console.log("pagenumber", pageNumber);
+
+  // return pageNumber
+
+  page =Number(page);
+  if(typeof page !=="number" || page <=0){
+    page=1
+  }
+  if(!page){
+    page=1
+  }
+  return page;
 }
 
 const User = () => {
@@ -21,7 +35,8 @@ const User = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams]=useSearchParams()
   // 1. Pagination
-  const [page, setPage]= useState(getCurrentPage(searchParams.get('page')));
+  const intialPage = searchParams.get("page");
+  const [page, setPage]= useState(getCurrentPage(intialPage));
 
   
   // const isAuth = false;
@@ -105,12 +120,4 @@ const handlePageChange=(val)=>{
 
 export default User;
 
-// get the data
 
-// https://reqres.in/api/users?page=2
-
-// display the data
-
-// loading indiacator
-
-// error into ui
