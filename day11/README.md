@@ -10,3 +10,6 @@ React router
 * useSearch Params
 
 
+* Navigate - navigate your component as per your requirement 
+
+
