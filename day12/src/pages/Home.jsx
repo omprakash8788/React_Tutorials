@@ -5,7 +5,7 @@ const Home = () => {
   const {isAuth ,logout} = useContext(AuthContext)
   return (
     <div>
-     <h1>Home Page</h1>
+     <h1> This is Home Page</h1>
      <button disabled={!isAuth} onClick={logout}>Logout</button>
     </div>
   )
