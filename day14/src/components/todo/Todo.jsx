@@ -1,13 +1,13 @@
 
 import React, { useEffect, useState } from 'react'
 import AddTodo from './AddTodo'
-import axios from 'axios'
 import TodoItem from './TodoItem'
+import { getTodo } from './api'
+// import {getTodo} from '../api'
 
-
-const getTodo=()=>{
-    return axios.get(`http://localhost:3001/todos`)
-}
+// const getTodo=()=>{
+//     return axios.get(`http://localhost:3001/todos`)
+// }
 
 
 

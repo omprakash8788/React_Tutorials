@@ -5,6 +5,31 @@
       "title": "Learn react",
       "status": false
     }
-  ]
- 
+  ],
+ "cities":[
+  {
+
+  "name": "United States",
+  "population": 331002651,
+  "country_code": "US",
+  "id": 1
+},
+{
+  "name": "China",
+  "population": 1444216107,
+  "country_code": "CN",
+  "id": 2
+},
+{
+  "name": "India",
+  "population": 1380004385,
+  "country_code": "IN",
+  "id": 3
 }
+
+ 
+]
+
+}
+
+

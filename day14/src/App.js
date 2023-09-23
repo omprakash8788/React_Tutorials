@@ -1,12 +1,12 @@
 import './App.css';
-import AxiosExample from './components/AxiosExample';
-import Todo from './components/todo/Todo';
+import Cities from './components/cities/Cities';
+// import Todo from './components/todo/Todo';
 
 function App() {
   return (
     <div className="App">
-    <AxiosExample/>
-    <Todo/>
+    {/* <Todo/> */}
+    <Cities/>
     </div>
   );
 }
