@@ -1,13 +1,16 @@
-import './App.css';
-import Counter from './components/Counter';
-import Todo from './components/Todo';
+import "./App.css";
+import Counter from "./components/Counter";
+import Todo from "./components/Todo";
+import { AppContext } from "./context/AppContext";
 
 function App() {
   return (
     <div className="App">
-   <Counter/>
-   <Todo/>
-    </div>
+      <AppContext>
+        <Counter />
+        <Todo />
+      </AppContext>
+     </div>
   );
 }
 

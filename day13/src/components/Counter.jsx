@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { useReducer } from 'react';
+// import React, { useState } from 'react'
+import { useContext, useReducer } from 'react';
+import { AppContext } from '../context/AppContext';
 
 
-const reducerFn=(state, {type, payload=1})=>{
+// const reducerFn=(state, {type, payload=1})=>{
 //   const {type, payload} = action;
 
 //   if(action.type==="INC"){
@@ -15,22 +16,22 @@ const reducerFn=(state, {type, payload=1})=>{
 //     return state;
 //   }
 
-switch(type){
-    case "INC":{
-        return state + payload;
-    }
-    case "DEC":{
-        return state- payload;
-    }
-    default:{
-        return state;
-    }
- }
-}
+// switch(type){
+//     // case "INC":{
+//     //     return state + payload;
+//     // }
+//     // case "DEC":{
+//     //     return state- payload;
+//     // }
+//     default:{
+//         return state;
+//     }
+//  }
+// }
 
 const Counter = () => {
     // const [count, setCount]=useState(0)
-    const [count, dispatch] = useReducer(reducerFn, 0);
+    const [{count}, dispatch] = useContext(AppContext);
   return (
     <div>
      <h3>Count:{count}</h3>
